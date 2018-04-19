@@ -1,0 +1,107 @@
+#include <iostream>
+using namespace std;
+
+bool esprimo(int x,int cont=0){
+	for(int i=1;x>=i;i++){
+		if(x%i==0)
+			cont++;
+	}
+	if(cont==2  or cont==1)
+		return 1;
+	return 0;
+}
+
+void primosn(int x,int c=1){
+	int n=1;
+	while (x>=c){
+		if (esprimo(n)){
+			c++;
+			cout<<n;
+			if(x>=c)
+				cout<<",";}		
+		n++;}
+	}
+
+int potencia(int x,int y){
+	if (y==1)
+		return x;
+	return x*potencia(x,--y);
+}
+
+bool perfecto(int x,int cont=0){
+	for(int i=1;x>i;i++){
+		if(x%i==0)
+			cont+=i;
+	}
+	if(cont==x){return 1;}
+	return 0;
+}
+
+void perfecton(int x,int cont=0){
+	for(int i=1;x>i;i++){
+		if(x%i==0){
+			cont+=i;
+			cout<<i;
+			cout<<",";}
+	}
+	cout<<"="<<x<<endl;
+
+}
+void perfectosn(int x,int y){
+	
+	while (y>=x){
+		if (perfecto(x)){
+			perfecton(x);
+		}		
+		x++;}
+}
+
+
+void change(int a, int b){
+	
+	b=a+b;
+	a=b-a;
+	b=b-a;
+	cout<<b<<" y "<<a<<endl;
+	cout<<a<<" y "<<b<<endl;
+}
+
+void changebit(int a, int b){
+	a = b ^a;
+	b = b^a;
+	a=a^b; 
+	cout<<"\n";
+	cout << a <<" y "<< b<<endl;
+}
+
+
+
+
+int main(int argc, char *argv[]) {
+	
+	/*int x;
+	cin>>x;
+	
+	cout<<esprimo(x)<<endl;
+	primosn(x);
+	return 0;
+}*/
+	
+	
+	
+	/*int x;
+	cin>>x;
+	cout<<perfecto(x);
+	int x1,y1;
+	cin>>x1>>y1;
+	perfectosn(x1,y1);
+	return 0;
+}*/
+
+
+	/*int x,y;
+	cin>>x>>y;
+	change(x,y);
+	changebit(x,y);
+	return 0;
+}*/
