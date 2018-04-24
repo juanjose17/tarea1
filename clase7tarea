@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+int f1r(int n[],int i=0){
+	
+	if (i==4){
+		return n[i];}
+	return  n[i]+f1r(n,++i);
+}
+
+int funcion3(char s[],int cont=0){
+	
+	
+	while(s[cont]!='\0'){
+		cont++;
+	}
+	return cont;
+}	
+
+void funcion4(char s[],char t[]){
+	
+	
+	for(int i=0;i<5;i++){
+		s[i]=t[i];}
+	for(int i=0;i<5;i++){
+		cout<<s[i];}
+	cout<<endl;
+}
+
+
+void funcion5(char s[],char t[],int cont=0){
+	
+	
+
+	while(s[cont]!='\0'){
+		cont++;
+	}
+	for(int i=0;t[i]!='\0';i++){
+		s[cont]=t[i];
+		cont++;
+	}
+	for(int i=0;i<10;i++){
+		cout<<s[i];}
+	cout<<endl;
+}
+	
+void funcion1(int n[]){
+
+
+	int suma=0;
+	for(int i=0;i<5;i++){
+		suma+=n[i];}
+	cout<<suma<<endl;
+}
+void funcion2(int n[]){
+	
+	int inverso=0;
+	for(int i=0;i<=4/2;i++){
+		//cout<<n[i];
+		inverso=n[i];
+		n[i]=n[4-i];
+		n[4-i]=inverso;
+	}
+	for(int i=0;i<5;i++){
+		cout<<n[i];}
+}
+
+int main(int argc, char *argv[]) {
+	char s[]={'h', 'o', 'l', 'a', 's','\0'};
+	char t[]={'m','a','n','o','s','\0'};
+	
+	cout<<funcion3(s)<<endl;
+	funcion4(s,t);
+	funcion5(s,t);
+	
+	int n[]={1,2,3,4,5};
+	
+	funcion1(n);
+	cout<<f1r(n)<<endl;
+	funcion2(n);
+	
+	
+	return 0;
+}
