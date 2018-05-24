@@ -1,0 +1,207 @@
+#include <iostream>
+using namespace std;
+
+class ADint{
+	int size;
+	int *data;
+public: 
+	ADint(int size, int arr[]){//constructor
+		
+		this->size=size;
+		this->data=new int [size];
+		for (int i=0;i<size;i++){
+			data[i]=arr[i];}
+	}
+	
+	void mostrar(){///BIENNNNNN
+		for(int i=0;i<size;i++){
+			cout<<data[i]<<" ";}}
+			
+	void insert_atras1(int elemt){////BIENNNNNNN
+		 int *nuevo=new int [size++];
+		 this->size=size;
+		 for(int i=0;i<size-1;i++){
+			 nuevo[i]=data[i];
+		 }
+		 nuevo[size-1]=elemt;
+		 delete[] data;
+		 data=nuevo;
+	}
+	
+	void insert_atras2(int pos,int elemt){
+	int *nuevo=new int [size++];
+	for(int i=0;i<size-1;i++){//1 2
+		nuevo[i]=data[i];
+	}
+	nuevo[pos]=elemt;//1 5
+	for(int i=pos;i<size;i++)//1 5. 2
+		nuevo[i+1]=data[i];
+	delete[] data;
+	data=nuevo;
+	}
+	void eliminar(int pos){
+		pos-=1;;
+		int *nuevo=new int [size--];
+		this->size=size;
+		for(int i=0;i<pos;i++){
+			nuevo[i]=data[i];}
+		for(int i=pos;i<size;i++){
+			nuevo[i]=data[i+1];}
+		delete[] data;
+		data=nuevo;
+	}
+	void ordenasc(){
+		int *nuevo=new int [size];
+		this->size=size;
+		
+		int cont;
+		for(int i=0;i<size;i++){
+			for(int j=0;j<size-1;j++){
+				if(data[j]>data[j+1]){
+					cont=data[j];
+					data[j]=data[j+1];
+					data[j+1]=cont;}  }}
+		
+		for (int i=0;i<size;i++){
+			nuevo[i]=data[i];}
+		delete[] data;
+		data=nuevo;
+	}
+	
+	void ordenadct(){
+		int *nuevo=new int [size];
+		this->size=size;
+		
+		int cont;
+		for(int i=0;i<size;i++){
+			for(int j=0;j<size-1;j++){
+				if(data[j]<data[j+1]){
+					cont=data[j];
+					data[j]=data[j+1];
+					data[j+1]=cont;}  }}
+		
+		for (int i=0;i<size;i++){
+			nuevo[i]=data[i];}
+		delete[] data;
+		data=nuevo;
+	}
+
+	
+	
+	
+	
+	int *promedio(){
+		int *p=new int;
+		int cont=0,s;
+		for(int i=0;i<size;i++){
+			cont+=data[i];}
+		s=cont/size;
+		p=&s;
+		return p;}
+
+
+
+
+	
+	int *menor(){
+		int *e=new int;
+		this->ordenasc();
+		*e=data[0];
+		return e;
+	}
+	int *mayor(){
+		int *a=new int;
+		this->ordenadct();
+		*a=data[0];
+		return a;
+	}
+	
+	bool esprimo(int x,int cont=0){
+		
+		for(int i=1;x>=i;i++){
+			if(x%i==0)
+				cont++;}
+		if(cont==2  or cont==1)
+			return 1;
+		return 0;}
+
+	void nprimos(){
+		
+		this->size=size;
+		int cont=0;
+		for(int i=0;i<size;i++){
+				if(esprimo(data[i]))
+					cont++;}
+		size=cont;
+		int *nuevo=new int [size];//despues del for
+		this->size=size;
+		
+		int conti=0;
+		for(int i=0;conti<size;i++){
+			if(esprimo(data[i])){
+			nuevo[conti]=data[i];
+			conti++;}
+		}
+		delete[] data;
+		data=nuevo;
+	}
+	int *mayorp(){
+		int *i=new int;
+		this->nprimos();
+		this->ordenadct();
+		*i=data[0];
+		return i;}
+	int *menorp(){
+		int *i=new int;
+		this->nprimos();
+		this->ordenasc();
+		*i=data[0];
+		return i;}
+};
+
+
+
+
+int main(int argc, char *argv[]) {
+	int arr[]={4,9,8,2,1,5,10,7,6,3};
+	ADint a(10,arr);
+	
+	//a.ordenadct();
+	//a.insert_atras1(5);
+	//a.eliminar(5);                         //<------------
+	//a.insert_atras2(1,5);
+	
+	
+	/*//mayor o menor elemnto del arreglo    //<------------
+	
+	cout<<*a.mayor()<<endl;
+	cout<<*a.menor()<<endl;*/
+	
+	/*o   mayor o menor elemnto del arreglo
+	
+	int *x;
+	x =a.menor();cout<<*x<<endl;
+	x =a.mayor();cout<<*x<<endl;delete x;*/
+	
+	//primos 
+	
+	/*//primos                              //<------------
+	
+	a.nprimos();
+	int *x;
+	x =a.mayorp();cout<<*x<<endl;
+	x =a.menorp();cout<<*x<<endl;delete x;*/
+	
+	/* o primos
+	cout<<*a.mayorp()<<endl;
+	cout<<*a.menorp()<<endl;*/
+	
+	/*  //promedio							//<--------------
+	
+	cout<<*a.promedio()<<endl;     //*/
+	
+	a.mostrar();
+	
+	return 0;
+
+}
