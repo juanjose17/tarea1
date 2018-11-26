@@ -1,3 +1,41 @@
+
+/*    ------------- colegio.h-------*/
+#include <conio.h>
+#include <string.h>
+#include <fstream>
+#include <stdlib.h>
+#ifndef MENU_H
+#define MENU_H
+#include <Persona.h>
+
+
+class Menu : public Persona{
+    public:
+        Menu();
+        ~Menu();
+        void menuPrincipal();
+        void crearAlumno();
+        void modificarAlumno();
+        void eliminarAlumno();
+        void visualizarAlumno(char codigo[30]);
+        void buscarAlumno();
+        void crearProfesor();
+    protected:
+    private:
+};
+
+#endif // MENU_H
+
+/*    ------------- colegio.h-------*/
+
+
+
+
+
+
+
+/*    ------------- colegio.cpp-------*/
+
 #include "Menu.h"
 #include <string>
 #include <iostream>
@@ -386,3 +424,9 @@ void Menu::eliminarAlumno()
     rename("auxiliar.txt","base.txt");
     pausa();
 }
+/*    ------------- colegio.cpp-------*/
+
+
+
+
+
